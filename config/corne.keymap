@@ -31,7 +31,7 @@
 };
 
 // Keymap configuration (Colemak-DHm)
-{
+/ {
     keymap {
         compatible = "zmk,keymap";
 
@@ -157,11 +157,5 @@
                             &trans     &trans     &trans        &trans  &trans  &trans
             >;
         };
-
-// TODO
-// Add 
-//   &bootloader
-//   &reset
-
     };
 };
