@@ -43,9 +43,9 @@
 //                            | ESC/MEDIA |  SPC/NAV  | TAB/MOUSE | # | ENTER/SYM | BSPC/NUM | DEL/FN  |
 
             bindings = <
-&kp GRAVE   &kp Q       &kp W       &kp F          &kp P          &kp B                &kp J          &kp L         &kp U          &kp Y         &kp SEMI       &BSPC
-&mo NAV     &mt LGUI A  &mt LALT R  &mt LCTRL S    &mt LSHFT T    &kp G                &kp M          &mt LSHFT N   &mt LCTRL E    &mt LALT I    &mt LGUI O     &APOS
-&kp LCTRL   &kp Z       &kp X       &kp C          &kp D          &kp V                &kp K          &kp H         &kp CMMA       &kp DOT       &kp FSLH       &ENTER
+&kp GRAVE   &kp Q       &kp W       &kp F          &kp P          &kp B                &kp J          &kp L         &kp U          &kp Y         &kp SEMI       &kp BSPC
+&mo NAV     &mt LGUI A  &mt LALT R  &mt LCTRL S    &mt LSHFT T    &kp G                &kp M          &mt LSHFT N   &mt LCTRL E    &mt LALT I    &mt LGUI O     &kp APOS
+&kp LCTRL   &kp Z       &kp X       &kp C          &kp D          &kp V                &kp K          &kp H         &kp CMMA       &kp DOT       &kp FSLH       &kp ENTER
                                     &lt MEDIA ESC  &lt NAV SPACE  &lt MOUSE TAB        &lt SYM ENTER  &lt NUM BSPC  &lt FN DEL
             >;
         };
