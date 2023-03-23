@@ -31,7 +31,7 @@
 };
 
 // Keymap configuration (Colemak-DHm)
-/ {
+{
     keymap {
         compatible = "zmk,keymap";
 
