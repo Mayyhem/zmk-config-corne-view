@@ -39,7 +39,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <50>;
             quick-tap-ms = <0>;
-            flavor = "balanced";
+            flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
     };
@@ -57,7 +57,7 @@
 
             bindings = <
 &kp GRAVE   &kp Q           &kp W           &kp F              &kp P              &kp B                &kp J          &kp L             &kp U              &kp Y             &kp SEMI           &kp BSPC
-&mo NAV     &hm LGUI A      &hm LALT R      &hm LCTRL S        &hshft LSHFT T    &kp G                 &kp M          &hshft LSHFT N    &hm LCTRL E        &hm LALT I        &hm LGUI O         &kp APOS
+&mo NAV     &hm LGUI A      &hm LALT R      &hm LCTRL S        &hshft LSHFT T     &kp G                &kp M          &hshft LSHFT N    &hm LCTRL E        &hm LALT I        &hm LGUI O         &kp APOS
 &kp LCTRL   &kp Z           &kp X           &kp C              &kp D              &kp V                &kp K          &kp H             &kp CMMA           &kp DOT           &kp FSLH           &kp ENTER
                                             &lt MEDIA ESC      &lt NAV SPACE      &lt MOUSE TAB        &lt SYM ENTER  &lt NUM BSPC      &lt FN DEL
             >;
