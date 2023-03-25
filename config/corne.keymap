@@ -15,19 +15,30 @@
 #define MOUSE 7
 
 // Behavior configuration
-&mt {
+&lt: layer_tap {
     tapping-term-ms = <200>;
     quick_tap_ms = <0>;
     flavor = "tap-preferred";
 };
-&lt {
-    tapping-term-ms = <200>;
-    quick_tap_ms = <0>;
-    flavor = "tap-preferred";
+lh_pht: left_hand_positional_hold_tap {
+    compatible = "zmk,behavior-hold-tap";
+    label = "LEFT_POSITIONAL_HOLD_TAP";
+    #binding-cells = <2>;
+    flavor = "tap-unless-interrupted";
+    tapping-term-ms = <100>;                        // <---[[produces tap if held longer than tapping-term-ms]]
+    quick-tap-ms = <200>;
+    bindings = <&kp>, <&kp>;
+    hold-trigger-key-positions = <5 6 7 8 9 10>;    // <---[[right-hand keys]]
 };
-&sk {
-    release-after-ms = <500>;
-    quick-release;
+rh_pht: right_hand_positional_hold_tap {
+    compatible = "zmk,behavior-hold-tap";
+    label = "RIGHT_POSITIONAL_HOLD_TAP";
+    #binding-cells = <2>;
+    flavor = "tap-unless-interrupted";
+    tapping-term-ms = <100>;                        // <---[[produces tap if held longer than tapping-term-ms]]
+    quick-tap-ms = <200>;
+    bindings = <&kp>, <&kp>;
+    hold-trigger-key-positions = <0 1 2 3 4>;    // <---[[left-hand keys]]
 };
 
 // Keymap configuration (Colemak-DHm)
@@ -37,31 +48,31 @@
 
         colemak {
 // -----------------------------------------------------------------------------------------------------------------------------
-// |        |   Q    |   W    |     F     |     P     |     B     | # |     J     |    L     |    U    |    Y   |   ;    | BSPC  |
+// |   `    |   Q    |   W    |     F     |     P     |     B     | # |     J     |    L     |    U    |    Y   |   ;    | BSPC  |
 // | NAV    | A/LGUI | R/LALT |  S/LCTRL  |  T/LSHFT  |     G     | # |     M     | N/LSHFT  | E/LCTRL | I/LALT | O/LGUI |   '   |
-// |        |   Z    | X      |     C     |     D     |     V     | # |     K     |    H     |    ,    | .      |   /    | ENTER |
+// | LCTRL  |   Z    |   X    |     C     |     D     |     V     | # |     K     |    H     |    ,    |    .   |   /    | ENTER |
 //                            | ESC/MEDIA |  SPC/NAV  | TAB/MOUSE | # | ENTER/SYM | BSPC/NUM | DEL/FN  |
 
             bindings = <
-&kp GRAVE   &kp Q       &kp W       &kp F          &kp P          &kp B                &kp J          &kp L         &kp U          &kp Y         &kp SEMI       &kp BSPC
-&mo NAV     &mt LGUI A  &mt LALT R  &mt LCTRL S    &mt LSHFT T    &kp G                &kp M          &mt LSHFT N   &mt LCTRL E    &mt LALT I    &mt LGUI O     &kp APOS
-&kp LCTRL   &kp Z       &kp X       &kp C          &kp D          &kp V                &kp K          &kp H         &kp CMMA       &kp DOT       &kp FSLH       &kp ENTER
-                                    &lt MEDIA ESC  &lt NAV SPACE  &lt MOUSE TAB        &lt SYM ENTER  &lt NUM BSPC  &lt FN DEL
+&kp GRAVE   &kp Q           &kp W           &kp F              &kp P              &kp B                &kp J          &kp L             &kp U              &kp Y             &kp SEMI           &kp BSPC
+&mo NAV     &lh_pht LGUI A  &lh_pht LALT R  &lh_pht LCTRL S    &lh_pht LSHFT T    &kp G                &kp M          &rh_pht LSHFT N   &rh_pht LCTRL E    &rh_pht LALT I    &rh_pht LGUI O     &kp APOS
+&kp LCTRL   &kp Z           &kp X           &kp C              &kp D              &kp V                &kp K          &kp H             &kp CMMA           &kp DOT           &kp FSLH           &kp ENTER
+                                            &lt MEDIA ESC      &lt NAV SPACE      &lt MOUSE TAB        &lt SYM ENTER  &lt NUM BSPC      &lt FN DEL
             >;
         };
 
         qwerty {
 // -----------------------------------------------------------------------------------------------------------------------------
 // |        |   Q    |   W    |     E     |     R     |     T     | # |     Y     |     U    |    I    |    O   |   P    |     |
-// |        | A/LGUI | S/LALT |  D/LCTRL  |  F/LSHFT  |     G     | # |     H     | J/LSHFT  | K/LCTRR | L/LALT | ;/LGUI |     |
-// |        |   Z    | X      |     C     |     V     |     B     | # |     N     |     M    |    ,    | .      |   /    |     |
+// |        | A/LGUI | S/LALT |  D/LCTRL  |  F/LSHFT  |     G     | # |     H     | J/LSHFT  | K/LCTRL | L/LALT | ;/LGUI |     |
+// |        |   Z    |   X    |     C     |     V     |     B     | # |     N     |     M    |    ,    |    .   |   /    |     |
 //                            | ESC/MEDIA | SPC/NAV   | TAB/MOUSE | # | ENTER/SYM | BSPC/NUM | DEL/FN  |
 
             bindings = <
-&trans      &kp Q       &kp W       &kp E          &kp R          &kp T                &kp Y          &kp U         &kp I          &kp O         &kp P          &trans
-&trans      &mt LGUI A  &mt LALT S  &mt LCTRL D    &mt LSHFT F    &kp G                &kp H          &mt LSHFT J   &mt LCTRL K    &mt LALT L    &mt LGUI SEMI  &trans
-&trans      &kp Z       &kp X       &kp C          &kp V          &kp B                &kp N          &kp M         &kp CMMA       &kp DOT       &kp FSLH       &trans
-                                    &lt MEDIA ESC  &lt NAV SPACE  &lt MOUSE TAB        &lt SYM ENTER  &lt NUM BSPC  &lt FN DEL
+&trans      &kp Q           &kp W           &kp E              &kp R              &kp T                &kp Y          &kp U             &kp I              &kp O             &kp P              &trans
+&trans      &lh_pht LGUI A  &lh_pht LALT S  &lh_pht LCTRL D    &lh_pht LSHFT F    &kp G                &kp H          &rh_pht LSHFT J   &rh_pht LCTRL K    &rh_pht LALT L    &rh_pht LGUI SEMI  &trans
+&trans      &kp Z           &kp X           &kp C              &kp V              &kp B                &kp N          &kp M             &kp CMMA           &kp DOT           &kp FSLH           &trans
+                                            &lt MEDIA ESC      &lt NAV SPACE      &lt MOUSE TAB        &lt SYM ENTER  &lt NUM BSPC      &lt FN DEL
             >;
         };
 
