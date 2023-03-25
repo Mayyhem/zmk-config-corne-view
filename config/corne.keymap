@@ -17,11 +17,6 @@
 / {
 // Behavior configuration from https://zmk.dev/docs/behaviors/hold-tap
     behaviors {
-        lt: layer_tap {
-            tapping-term-ms = <200>;
-            quick_tap_ms = <0>;
-            flavor = "tap-preferred";
-        };
         lh_pht: left_hand_positional_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             label = "LEFT_POSITIONAL_HOLD_TAP";
