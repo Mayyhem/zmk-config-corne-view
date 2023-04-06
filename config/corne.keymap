@@ -8,10 +8,10 @@
 #define COLEMAK 0
 #define EXTEND 1
 #define NUM 2
-#define SYM 3
-#define MEDIA 4
-#define FN 5
-#define MOUSE 6
+#define MEDIA 3
+#define FN 4
+#define MOUSE 5
+#define AS(keycode) &as LS(keycode) keycode     // Autoshift Macro
 
 // Backspace/delete multiple on double tap hold
 &lt {
@@ -23,6 +23,15 @@
 / {
 // Behavior configuration from https://zmk.dev/docs/behaviors/hold-tap
     behaviors {
+        as: auto_shift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AUTO_SHIFT";
+            #binding-cells = <2>;
+            tapping_term_ms = <135>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
         hm: homerow {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
@@ -54,28 +63,28 @@
 // Keymap configuration (Colemak-DHm)
     keymap {
         compatible = "zmk,keymap";
-
+        
         colemak {
 // -----------------------------------------------------------------------------------------------------------------------------
-// |   `    |   Q   |   W   |   F   |   P   |   B   | # |   J   |   L   |   U   |   Y   |   ;    | BSPC  |
-// | EXTEND |   A   |   R   |   S   |   T   |   G   | # |   M   |   N   |   E   |   I   |   O    |   '   |
-// | SHIFT  |   Z   |   X   |   C   |   D   |   V   | # |   K   |   H   |   ,   |   .   |   /    | ENTER |
-//             | TAB/MEDIA |  SPC/EXTEND  | ENTER/NUM | # | BSPC/SYM | SPC/MOUSE | DEL/FN  |
+// |   `        |   Q   |   W   |   F   |   P   |   B   | # |   J   |   L   |   U   |   Y   |   ;    | BSPC  |
+// | TAB/EXTEND |   A   |   R   |   S   |   T   |   G   | # |   M   |   N   |   E   |   I   |   O    |   '   |
+// | SHIFT      |   Z   |   X   |   C   |   D   |   V   | # |   K   |   H   |   ,   |   .   |   /    | ENTER |
+//                   | REPEAT/MEDIA |  SPC/NUM  | ENTER | # | BSPC/MOUSE | SPC/EXTEND | DEL/FN  |
 
             bindings = <
-&kp GRAVE    &kp Q      &kp W      &kp F    &kp P     &kp B                &kp J    &kp L    &kp U        &kp Y        &kp SEMI      &kp BSPC
-&mo EXTEND   &kp A      &kp R      &kp S    &kp T     &kp G                &kp M    &kp N    &kp E        &kp I        &kp O         &kp APOS
-&skq SHIFT   &kp Z      &kp X      &kp C    &kp D     &kp V                &kp K    &kp H    &kp CMMA     &kp DOT      &kp FSLH      &kp ENTER
-               &lt MEDIA TAB       &lt EXTEND SPACE   &lt NUM ENTER        &lt SYM BSPC  &lt MOUSE SPACE  &lt FN DEL
+&kp GRAVE        &kp Q      &kp W      &kp F    &kp P     &kp B                &kp J    &kp L    &kp U        &kp Y        &kp SEMI      &kp BSPC
+&lt EXTEND TAB   &kp A      &kp R      &kp S    &kp T     &kp G                &kp M    &kp N    &kp E        &kp I        &kp O         &kp APOS
+&skq SHIFT       &kp Z      &kp X      &kp C    &kp D     &kp V                &kp K    &kp H    &kp CMMA     &kp DOT      &kp FSLH      &kp ENTER
+               &lt MEDIA TAB  &lt NUM SPACE   &lt NUM ENTER        &lt SYM BSPC  &lt MOUSE SPACE  &lt FN DEL
             >;
         };
 
         extend {
 // -------------------------------------------------------------------------------------------
-// |     |      |      | ESC   | PSCRN |     | # | CPSWD | HOME | UP   | END   | DELETE |     |
-// |     | LALT | LGUI | LCTRL | LSHFT |     | # | PG_UP | LEFT | DOWN | RIGHT | BSPC   |     |
-// |     | UNDO | CUT  | COPY  | PASTE |     | # | PG_DN | UNDO | RPT  | REDO  |        |     |
-//                     |       | HELD  |     | # |       |      |      |
+// |      |      |      | ESC   | PSCRN |     | # | CPSWD | HOME | UP   | END   | DELETE |     |
+// | HELD | LALT | LGUI | LCTRL | LSHFT |     | # | PG_UP | LEFT | DOWN | RIGHT | BSPC   |     |
+// |      | UNDO | CUT  | COPY  | PASTE |     | # | PG_DN | UNDO | RPT  | REDO  |        |     |
+//                      |       |       |     | # |       | HELD |      |
 
             bindings = <
 &trans  &trans     &trans    &kp ESC    &kp PSCRN   &trans        &caps_word    &kp HOME    &kp UP      &kp END      &kp DEL     &trans
@@ -85,12 +94,12 @@
             >;
         };
 
-        numbers {
+        num {
 // -----------------------------------------------------------------------------------
-// |     |  1  |  2  |  3  |  4  |  5  | # |  6  |   7   |   8   |   9   |      |     |
-// |     |     |     |     |     |     | # |     |   4   |   5   |   6   |      |     |
-// |     |     |     |     |     |     | # |     |   1   |   2   |   3   |      |     |
-//                   |     |     |     | # |     |   0   |   .   |
+// |     |  1  |  2  |  3  |  4   |  5  | # |  6  |   7   |   8   |   9   |   0   |     |
+// |     |  [  |  ]  |  (  |  )   |  -  | # |  +  |   4   |   5   |   6   |       |     |
+// |     |  <  |  >  |  {  |  }   |  _  | # |  =  |   1   |   2   |   3   |   .   |     |
+//                   |     | HELD |     | # |  /  |   0   |   \   |
 
             bindings = <
 &trans  &kp N1  &kp N2  &kp N3   &kp N4  &kp N5        &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
@@ -101,11 +110,11 @@
         };
 
         symbols {
-// ------------------------------------------------------------------------------------
-// |     |     |     |     |     |     | # |      |       |       |      |      |     |
-// |     |     |     |     |     |     | # |      |       |       |      |      |     |
-// |     |     |     |     |     |     | # |      |       |       |      |      |     |
-//                   |     |     |     | # |      |       |       |
+// -------------------------------------------------------------------------------------
+// |     |  !  |  @  |  #  |  $  |  %  | # |   ^   |   &   |   *   |   (   |   )  |  \  |
+// |     |  +  |  =  |  (  |  )  |  |  | # |   +   |   $   |   %   |   ^   |      |     |
+// |     |  <  |  >  |  [  |  ]  |  \  | # |   #   |   !   |   @   |   #   |      |     |
+//                   |  {  |  }  |  -  | # | HELD  |       |       |
 
             bindings = <
 &trans  &kp LBRC   &kp AMPS  &kp ASTRK  &kp LPAR   &kp RBRC              &trans  &trans     &trans     &trans    &trans    &trans
