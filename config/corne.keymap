@@ -40,14 +40,6 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
-        skq: sticky_key_quick_release {
-            compatible = "zmk,behavior-sticky-key";
-            label = "STICKY_KEY_QUICK_RELEASE";
-            #binding-cells = <1>;
-            bindings = <&kp>;
-            release-after-ms = <1000>;
-            quick-release;
-        };
     };
     
 // Keymap configuration (Colemak-DHm)
@@ -64,7 +56,7 @@
             bindings = <
 &kp GRAVE         &kp Q            &kp W      &kp F    &kp P     &kp B                &kp J    &kp L    &kp U        &kp Y        &kp SEMI      &kp BSPC
 &lt EXTEND TAB    &kp A            &kp R      &kp S    &kp T     &kp G                &kp M    &kp N    &kp E        &kp I        &kp O         &kp APOS
-&skq LSHFT        &kp Z            &kp X      &kp C    &kp D     &kp V                &kp K    &kp H    &kp CMMA     &kp DOT      &kp FSLH      &kp ENTER
+&kp LSHFT         &kp Z            &kp X      &kp C    &kp D     &kp V                &kp K    &kp H    &kp CMMA     &kp DOT      &kp FSLH      &kp ENTER
                   &lt MEDIA ESC    &lt EXTEND SPACE    &lt NUM ENTER                  &lt MOUSE BSPC    &lt EXTEND SPACE  &lt FUNC DEL
             >;
         };
