@@ -48,14 +48,6 @@
             release-after-ms = <1000>;
             quick-release;
         };
-        hltr: hold_layer_tap_repeat {
-            label = "HOLD_LAYER_TAP_REPEAT";
-            #binding-cells = <2>;
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&mo>, <&key_repeat>;
-            tapping-term-ms = <120>;
-            flavor = "tap-preferred";
-        };
     };
     
 // Keymap configuration (Colemak-DHm)
@@ -73,7 +65,7 @@
 &kp GRAVE         &kp Q            &kp W      &kp F    &kp P     &kp B                &kp J    &kp L    &kp U        &kp Y        &kp SEMI      &kp BSPC
 &lt EXTEND TAB    &kp A            &kp R      &kp S    &kp T     &kp G                &kp M    &kp N    &kp E        &kp I        &kp O         &kp APOS
 &skq LSHFT        &kp Z            &kp X      &kp C    &kp D     &kp V                &kp K    &kp H    &kp CMMA     &kp DOT      &kp FSLH      &kp ENTER
-                  &hltr MEDIA 0    &lt EXTEND SPACE    &lt NUM ENTER                  &lt MOUSE BSPC    &lt EXTEND SPACE  &lt FUNC DEL
+                  &lt MEDIA ESC    &lt EXTEND SPACE    &lt NUM ENTER                  &lt MOUSE BSPC    &lt EXTEND SPACE  &lt FUNC DEL
             >;
         };
 
