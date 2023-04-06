@@ -9,8 +9,10 @@
 #define EXTEND 1
 #define NUM 2
 #define MEDIA 3
-#define FN 4
+#define FUNCTION 4
 #define MOUSE 5
+
+// Macros
 #define AS(keycode) &as LS(keycode) keycode     // Autoshift Macro
 
 // Backspace/delete multiple on double tap hold
@@ -51,12 +53,21 @@
             bindings = <&kp>, <&kp>;
         };
         skq: sticky_key_quick_release {
-        compatible = "zmk,behavior-sticky-key";
-        label = "STICKY_KEY_QUICK_RELEASE";
-        #binding-cells = <1>;
-        bindings = <&kp>;
-        release-after-ms = <1000>;
-        quick-release;
+            compatible = "zmk,behavior-sticky-key";
+            label = "STICKY_KEY_QUICK_RELEASE";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+            release-after-ms = <1000>;
+            quick-release;
+        };
+        
+        hltr: hold_layer_tap_repeat {
+            label = "HOLD_LAYER_TAP_REPEAT";
+            #binding-cells = <2>;
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&mo>, <&key_repeat>;
+            tapping-term-ms = <120>;
+            flavor = "tap-preferred";
         };
     };
     
@@ -69,90 +80,77 @@
 // |   `        |   Q   |   W   |   F   |   P   |   B   | # |   J   |   L   |   U   |   Y   |   ;    | BSPC  |
 // | TAB/EXTEND |   A   |   R   |   S   |   T   |   G   | # |   M   |   N   |   E   |   I   |   O    |   '   |
 // | SHIFT      |   Z   |   X   |   C   |   D   |   V   | # |   K   |   H   |   ,   |   .   |   /    | ENTER |
-//                   | REPEAT/MEDIA |  SPC/NUM  | ENTER | # | BSPC/MOUSE | SPC/EXTEND | DEL/FN  |
+//            | REPEAT/MEDIA |  SPC/EXTEND  | ENTER/NUM | # | BSPC/MOUSE | SPC/EXTEND | DEL/FN  |
 
             bindings = <
-&kp GRAVE        &kp Q      &kp W      &kp F    &kp P     &kp B                &kp J    &kp L    &kp U        &kp Y        &kp SEMI      &kp BSPC
-&lt EXTEND TAB   &kp A      &kp R      &kp S    &kp T     &kp G                &kp M    &kp N    &kp E        &kp I        &kp O         &kp APOS
-&skq SHIFT       &kp Z      &kp X      &kp C    &kp D     &kp V                &kp K    &kp H    &kp CMMA     &kp DOT      &kp FSLH      &kp ENTER
-               &lt MEDIA TAB  &lt NUM SPACE   &lt NUM ENTER        &lt SYM BSPC  &lt MOUSE SPACE  &lt FN DEL
+&kp GRAVE         &kp Q            &kp W      &kp F    &kp P     &kp B                &kp J    &kp L    &kp U        &kp Y        &kp SEMI      &kp BSPC
+&lt EXTEND TAB    &kp A            &kp R      &kp S    &kp T     &kp G                &kp M    &kp N    &kp E        &kp I        &kp O         &kp APOS
+&skq SHIFT        &kp Z            &kp X      &kp C    &kp D     &kp V                &kp K    &kp H    &kp CMMA     &kp DOT      &kp FSLH      &kp ENTER
+                  &hltr MEDIA RPT  &lt EXTEND SPACE  &lt NUM ENTER                    &lt MOUSE BSPC  &lt EXTEND SPACE  &lt FN DEL
             >;
         };
 
         extend {
 // -------------------------------------------------------------------------------------------
 // |      |      |      | ESC   | PSCRN |     | # | CPSWD | HOME | UP   | END   | DELETE |     |
-// | HELD | LALT | LGUI | LCTRL | LSHFT |     | # | PG_UP | LEFT | DOWN | RIGHT | BSPC   |     |
+// | HELD | LALT | LGUI | LSHFT | LCTRL |     | # | PG_UP | LEFT | DOWN | RIGHT | BSPC   |     |
 // |      | UNDO | CUT  | COPY  | PASTE |     | # | PG_DN | UNDO | RPT  | REDO  |        |     |
 //                      |       |       |     | # |       | HELD |      |
 
             bindings = <
 &trans  &trans     &trans    &kp ESC    &kp PSCRN   &trans        &caps_word    &kp HOME    &kp UP      &kp END      &kp DEL     &trans
-&trans  &kp LALT   &kp LGUI  &kp LCTRL  &kp LSHFT   &trans        &kp PG_UP     &kp LEFT    &kp DOWN    &kp RIGHT    &kp BSPC    &trans
+&trans  &kp LALT   &kp LGUI  &kp LSHFT  &kp LCTRL   &trans        &kp PG_UP     &kp LEFT    &kp DOWN    &kp RIGHT    &kp BSPC    &trans
 &trans  &kp K_UNDO &kp K_CUT &kp K_COPY &kp K_PASTE &trans        &kp PG_DN     &kp K_UNDO  &key_repeat &kp K_REDO   &trans      &trans
                              &trans     &trans      &trans        &trans        &trans      &trans
             >;
         };
 
         num {
-// -----------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
 // |     |  1  |  2  |  3  |  4   |  5  | # |  6  |   7   |   8   |   9   |   0   |     |
-// |     |  [  |  ]  |  (  |  )   |  -  | # |  +  |   4   |   5   |   6   |       |     |
-// |     |  <  |  >  |  {  |  }   |  _  | # |  =  |   1   |   2   |   3   |   .   |     |
-//                   |     | HELD |     | # |  /  |   0   |   \   |
+// |     |  [  |  ]  |  (  |  )   |  -  | # |  +  |   4   |   5   |   6   |   |   |     |
+// |     |  #  |  !  |  {  |  }   |  _  | # |  =  |   1   |   2   |   3   |   \   |     |
+//                   |     | HELD |     | # |  /  |   0   |   .   |
 
             bindings = <
-&trans  &kp N1  &kp N2  &kp N3   &kp N4  &kp N5        &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
-&trans  &trans  &trans  &trans   &trans  &trans        &trans  &kp N4  &kp N5  &kp N6  &trans  &trans
-&trans  &trans  &trans  &trans   &trans  &trans        &trans  &kp N1  &kp N2  &kp N3  &trans  &trans
-                        &trans   &trans  &trans        &trans  &kp N0  &kp DOT
+&trans  AS(N1)    AS(N2)    AS(N3)    AS(N4)    AS(N5)        AS(N6)     AS(N7)  AS(N8)  AS(N9)  AS(N0)    &trans
+&trans  &kp LBKT  &kp RBKT  &kp LPAR  &kp RPAR  &kp MINUS     &kp PLUS   &kp N4  &kp N5  &kp N6  &kp PIPE  &trans
+&trans  &kp HASH  &kp EXCL  &kp LBRC  &kp RBRC  &kp UNDER     &kp EQUAL  &kp N1  &kp N2  &kp N3  &kp BSLH  &trans
+                            &trans    &trans    &trans        &kp FSLH   &kp N0  &kp DOT
             >;
         };
-
-        symbols {
-// -------------------------------------------------------------------------------------
-// |     |  !  |  @  |  #  |  $  |  %  | # |   ^   |   &   |   *   |   (   |   )  |  \  |
-// |     |  +  |  =  |  (  |  )  |  |  | # |   +   |   $   |   %   |   ^   |      |     |
-// |     |  <  |  >  |  [  |  ]  |  \  | # |   #   |   !   |   @   |   #   |      |     |
-//                   |  {  |  }  |  -  | # | HELD  |       |       |
+        
+        function {
+// ------------------------------------------------------------------------------------------
+// |     |  F1  |  F2  |  F3   |  F4  |  F5  | # |  F6  |  F7  |  F8  |  F9  |  F10  |  F11  |
+// |     | LALT | LGUI | LSHFT | LCTRL|      | # |      |  F4  |  F5  |  F6  |       |       |
+// |     |      |      |       |      |      | # |      |  F1  |  F2  |  F3  |       |       |
+//                     |       |      |      | # |      |      |      |
 
             bindings = <
-&trans  &kp LBRC   &kp AMPS  &kp ASTRK  &kp LPAR   &kp RBRC              &trans  &trans     &trans     &trans    &trans    &trans
-&trans  &kp COLON  &kp DLLR  &kp PRCNT  &kp CARET  &kp PLUS              &trans  &kp LSHFT  &kp LCTRL  &kp LALT  &kp LGUI  &trans
-&trans  &kp TILDE  &kp EXCL  &kp AT     &kp HASH   &kp PIPE              &trans  &trans     &trans     &trans    &trans    &trans
-                             &kp LPAR   &kp RPAR   &kp UNDERSCORE        &trans  &trans     &trans
+&trans  &kp F1    &kp F2    &kp F3      &kp F4        &kp F5              &kp F6  &kp F7     &kp F8     &kp F9    &kp F10    &kp F11
+&trans  &kp LALT  &kp LGUI  &kp LSHFT   &kp LCTRL     &trans              &trans  &kp F4     &kp F5     &kp F6    &trans     &trans
+&trans  &trans    &trans    &trans      &trans        &trans              &trans  &kp F1     &kp F2     &kp F3    &trans     &trans
+                            &trans      &trans        &trans              &trans  &trans     &trans
             >;
         };
 
         media {
 // -----------------------------------------------------------------------------------------------------
 // |     |      |      |       |       |      | # |      |        | VOL_U  |       |      |     |
-// |     | LGUI | LALT | LCTRL | LSHFT |      | # |      | PREV   | VOL_D  | NEXT  |      |     |
+// |     | LALT | LGUI | LSHFT | LCTRL |      | # |      | PREV   | VOL_D  | NEXT  |      |     |
 // |     |      |      |       |       |      | # |      | PLAY   | STOP   |       |      |     |
 //                     | HELD  |       |      | # |      |        | MUTE   |
 
             bindings = <
 &trans  &trans    &trans    &trans     &trans     &trans        &trans      &trans      &cp C_VOL_UP  &trans       &trans   &trans
-&trans  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &trans        &trans      &cp C_PREV  &cp C_VOL_DN  &cp C_NEXT   &trans   &trans
+&trans  &kp LALT  &kp LGUI  &kp LSHFT  &kp LCTRL  &trans        &trans      &cp C_PREV  &cp C_VOL_DN  &cp C_NEXT   &trans   &trans
 &trans  &trans    &trans    &trans     &trans     &trans        &trans      &cp C_PLAY  &bt C_STOP    &trans       &trans   &trans
                             &trans     &trans     &trans        &trans      &trans      &cp C_MUTE
             >;
         };
 
-        function {
-// ------------------------------------------------------------------------------------------
-// |     |  F12 |  F7  |  F8  |  F9   | PSCRN | # |     |       |       |      |      |     |
-// |     |  F11 |  F4  |  F5  |  F6   | SLCK  | # |     | LSHFT | LCTRL | LALT | LGUI |     |
-// |     |  F10 |  F1  |  F2  |  F3   | PAUSE | # |     |       |       |      |      |     |
-//                     | ESC  | SPACE |  TAB  | # |     |       | HELD  |
 
-            bindings = <
-&trans  &kp F12  &kp F7  &kp F8   &kp F9     &kp PSCRN              &trans  &trans     &trans     &trans    &trans    &trans
-&trans  &kp F11  &kp F4  &kp F5   &kp F6     &kp SLCK               &trans  &kp LSHFT  &kp LCTRL  &kp LALT  &kp LGUI  &trans
-&trans  &kp F10  &kp F1  &kp F2   &kp F3     &kp PAUSE_BREAK        &trans  &trans     &trans     &trans    &trans    &trans
-                         &kp ESC  &kp SPACE  &kp TAB                &trans  &trans     &trans
-            >;
-        };
 
 // TODO
 // Add mouse keys when implemented in ZMK
