@@ -113,7 +113,7 @@
 //                   |     |  /  |  \  | # |    |   HELD   |      |
 
             bindings = <
-&trans  &kp AMPS    &kp STAR   &kp AT    &kp DLLR  &kp CARAT     &trans     &trans  &trans  &trans  &trans   &trans
+&trans  &kp AMPS    &kp STAR   &kp AT    &kp DLLR  &kp CARET     &trans     &trans  &trans  &trans  &trans   &trans
 &trans  &kp PIPE    &kp LBKT   &kp LBRC  &kp LPAR  &kp EQUAL     &trans     &trans  &trans  &trans  &trans   &trans
 &trans  &trans      &kp PRCNT  &kp HASH  &kp EXCL  &kp MINUS     &trans     &trans  &trans  &trans  &trans   &trans
                                &trans    &kp FSLH  &kp BSLH      &trans     &trans  &trans
