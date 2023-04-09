@@ -86,7 +86,7 @@
 &kp GRAVE         AS(Q)            AS(W)      AS(F)    AS(P)     AS(B)                AS(J)    AS(L)    AS(U)        AS(Y)        AS(SEMI)      &kp BSPC
 &lt EXTEND TAB    AS(A)            AS(R)      AS(S)    AS(T)     AS(G)                AS(M)    AS(N)    AS(E)        AS(I)        AS(O)         AS(APOS)
 &kp LCTRL         AS(Z)            AS(X)      AS(C)    AS(D)     AS(V)                AS(K)    AS(H)    AS(COMMA)    AS(DOT)      AS(FSLH)      &kp ENTER
-                  &skq SHIFT       &lt NUM BSPC        &hltr MEDIA 0                  &kp ENTER  &lt SYM SPACE  &lt FUNC DEL
+                  &skq LSHFT       &lt NUM BSPC        &hltr MEDIA 0                  &kp ENTER  &lt SYM SPACE  &lt FUNC DEL
             >;
         };
 
