@@ -82,10 +82,8 @@
         combo_dotslash_dotdotslash {
             timeout-ms = <50>;
             key-positions = <33 34>;
-            bindings = <&kp DOT &kp DOT &kp FSLSH>;
+            bindings = <&kp DOT &kp DOT &kp FSLH>;
         };
-
-        
     };
     
     macros {
