@@ -147,7 +147,7 @@
             #binding-cells = <0>;
             bindings = <&macro_tap &kp Q &kp U &kp E>;
         };
-        mac_t: mac_t
+        mac_t: mac_t {
             label = "macro_t_the";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
