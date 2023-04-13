@@ -6,12 +6,13 @@
 
 // Layer Definitions
 #define COLEMAK 0
-#define EXTEND 1
-#define SYM 2
-#define NUM 3
-#define FUNC 4
-#define MEDIA 5
-#define MOUSE 6
+#define MACRO 1
+#define EXTEND 2
+#define SYM 3
+#define NUM 4
+#define FUNC 5
+#define MEDIA 6
+#define MOUSE 7
 
 // Macros
 #define AS(keycode) &as LS(keycode) keycode     // Autoshift Macro				
@@ -24,7 +25,7 @@
 };
 
 / {
-// Behavior configuration from https://zmk.dev/docs/behaviors/hold-tap
+    // Behavior configuration from https://zmk.dev/docs/behaviors/hold-tap
     behaviors {
         as: auto_shift {
             compatible = "zmk,behavior-hold-tap";
@@ -70,6 +71,103 @@
             flavor = "tap-preferred";
         };
     };
+   
+    combos {
+        compatible = "zmk,combos";
+        combo_qw_esc {
+            timeout-ms = <50>;
+            key-positions = <1 2>;
+            bindings = <&kp ESC>;
+        };
+        combo_dotslash_dotdotslash {
+            timeout-ms = <50>;
+            key-positions = <33 34>;
+            bindings = <&kp DOT &kp DOT &kp FSLSH>;
+        };
+
+        
+    };
+    
+    macros {
+        mac_a: mac_a {
+            label = "macro_a_and";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp A &kp N &kp D>;
+        };
+        mac_d: mac_d {
+            label = "macro_d_ould";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp O &kp U &kp L &kp D>;
+        };
+        mac_e: mac_e {
+            label = "macro_e_every";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp E &kp V &kp E &kp R &kp Y>;
+        };        
+        mac_f: mac_f {
+            label = "macro_f_for";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp F &kp O &kp R>;
+        };
+        mac_g: mac_g {
+            label = "macro_g_ing";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp I &kp N &kp G>;
+        };
+        mac_h: mac_h {
+            label = "macro_h_here";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp H &kp E &kp R &kp E>;
+        };
+        mac_i: mac_i {
+            label = "macro_i_ion";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp I &kp O &kp N>;
+        };
+        mac_m: mac_m {
+            label = "macro_m_ment";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp M &kp E &kp N &kp T>;
+        };
+        mac_o: mac_o {
+            label = "macro_o_ough";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp O &kp U &kp G &kp H>;
+        };
+        mac_q: mac_q {
+            label = "macro_q_que";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp Q &kp U &kp E>;
+        };
+        mac_t: mac_t
+            label = "macro_t_the";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp T &kp H &kp E>;
+        };
+        mac_w: mac_w {
+            label = "macro_w_with";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp W &kp I &kp T &kp H>;
+        };
+        mac_y: mac_y {
+            label = "macro_y_you";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp Y &kp O &kp U>;
+        };
+    };
     
 // Keymap configuration (Colemak-DHm)
     keymap {
@@ -80,15 +178,30 @@
 // |   `        |   Q   |   W   |   F   |   P   |   B   | # |   J   |   L   |   U   |   Y   |   ;    | BSPC  |
 // | TAB/EXTEND |   A   |   R   |   S   |   T   |   G   | # |   M   |   N   |   E   |   I   |   O    |   '   |
 // | CTRL       |   Z   |   X   |   C   |   D   |   V   | # |   K   |   H   |   ,   |   .   |   /    | ENTER |
-//                  | SHIFT |  BSPC/NUM  | REPEAT/MEDIA | # | ENTER | SPC/SYM | DEL/FN  |
+//                  | SHIFT |  BSPC/NUM  | REPEAT/MEDIA | # | MACRO | SPC/SYM | DEL/FN  |
 
             bindings = <
 &kp GRAVE         AS(Q)            AS(W)      AS(F)    AS(P)     AS(B)                AS(J)    AS(L)    AS(U)        AS(Y)        AS(SEMI)      &kp BSPC
 &lt EXTEND TAB    AS(A)            AS(R)      AS(S)    AS(T)     AS(G)                AS(M)    AS(N)    AS(E)        AS(I)        AS(O)         AS(APOS)
 &kp LCTRL         AS(Z)            AS(X)      AS(C)    AS(D)     AS(V)                AS(K)    AS(H)    AS(COMMA)    AS(DOT)      AS(FSLH)      &kp ENTER
-                  &skq LSHFT       &lt NUM BSPC        &hltr MEDIA 0                  &kp ENTER  &lt SYM SPACE  &lt FUNC DEL
+                  &skq LSHFT       &lt NUM BSPC        &hltr MEDIA 0                  &sl MACRO  &lt SYM SPACE  &lt FUNC DEL
             >;
         };
+        
+        macro {
+// -----------------------------------------------------------------------------------------------------------------------------
+// |     |   que  |  with |  for  |   P   |   B   | # |   J   |   L   |   U   |  you  |   ;    |       |
+// |     |   and  |   R   |   S   |  the  |  ing  | # |  ment |   N   | every |  ion  |  ough  |       |
+// |     |   Z    |   X   |   C   |  ould |   V   | # |   K   |  here |   ,   |   .   |   /    |       |
+//                        |       |       |       | # | HELD  |       |       |
+
+            bindings = <
+&trans         &mac_q      &mac_w      &mac_f    &trans     &trans                &trans    &trans    &trans        &mac_y        &trans      &trans
+&trans         &mac_a      &trans      &trans    &mac_t     &mac_g                &mac_m    &trans    &mac_e        &mac_i        &mac_o      &trans
+&trans         &trans      &trans      &trans    &mac_d     &trans                &trans    &mac_h    &trans        &trans        &trans      &trans
+                                       &trans    &trans     &trans                &trans    &trans    &trans
+            >;
+        };                
 
         extend {
 // -------------------------------------------------------------------------------------------
@@ -119,8 +232,6 @@
                                &trans    &kp FSLH  &kp BSLH      &trans     &trans  &trans
             >;
         };
-       
-       
        
 // Backspace available through trans to extend layer
 // Left side symbols available through trans to sym layer
@@ -187,5 +298,6 @@
                             &trans     &trans     &trans        &trans  &trans  &trans
             >;
         };
+
     };
 };
