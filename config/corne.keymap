@@ -227,16 +227,16 @@
 
         sym {
 // --------------------------------------------------------------------------------------
-// |     |  &  |  *  |  @  |  $  |  ^  | # |    |      |  UP  |       |      | LOCK |
-// |     |  |  |  [] |  {} |  () |  =  | # |    | LEFT | DOWN | RIGHT |      |      |
-// |     |     |  %  |  #  |  !  |  -  | # |    |      |      |       |      |      |
-//                   |  /  |     |  \  | # |    |   HELD   |      |
+// |     |     |  @  |  $  |  %  |     | # |     |  ^  |  *  |  =  |     | LOCK |
+// |     |  &  |  [  |  {  |  (  |  -  | # |  +  |  )  |  }  |  ]  |  ~  |      |
+// |     |     |  _  |  #  |  !  |  `  | # |  |  |  ?  |  <  |  >  |     |      |
+//                   |  /  |     |  \  | # | STKY  |     |      |
 
             bindings = <
-&trans  &kp AMPS    &kp STAR          &kp AT            &kp DLLR          &kp CARET     &trans     &trans    &kp UP    &trans     &trans   &kp K_LOCK
-&trans  &kp PIPE    &ht_tp RBKT LBKT  &ht_tp RBRC LBRC  &ht_tp RPAR LPAR  AS(EQUAL)     &trans     &kp LEFT  &kp DOWN  &kp RIGHT  &trans   &trans
-&trans  &trans      &kp PRCNT         &kp HASH          &kp EXCL          AS(MINUS)     &trans     &trans    &trans    &trans     &trans   &trans
-                                      &kp FSLH          &trans            AS(BSLH)      &trans     &trans    &trans
+&trans  &trans    &kp AT     &kp DLLR   &kp PRCNT  &trans           &trans    &kp CARET  &kp STAR  &kp EQUAL  &trans     &kp K_LOCK
+&trans  &kp AMPS  &kp LBKT   &kp LBRC   &kp LPAR   &kp MINUS        &kp PLUS  &kp RPAR   &kp RBRC  &kp RBKT   &kp TILDE  &trans
+&trans  &trans    &kp UNDER  &kp HASH   &kp EXCL   &kp GRAVE        &kp PIPE  &kp QMARK  &kp LT    &kp GT     &trans     &trans
+                             &kp FSLH   &trans     &kp BSLH         &trans     &trans    &trans
             >;
         };
        
