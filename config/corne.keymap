@@ -185,14 +185,14 @@
 // |   `        |   Q   |   W   |   F   |   P   |   B   | # |   J   |   L   |   U   |   Y   |   ;    | BSPC  |
 // | TAB/EXTEND |   A   |   R   |   S   |   T   |   G   | # |   M   |   N   |   E   |   I   |   O    |   '   |
 // | CTRL       |   Z   |   X   |   C   |   D   |   V   | # |   K   |   H   |   ,   |   .   |   /    | ENTER |
-//                  | SHIFT |  BSPC/NUM  | REPEAT/MEDIA | # | MACRO | SPC/SYM | DEL/FN  |
+//                  | SHIFT |  BSPC/NUM  | REPEAT/MEDIA | # |  SYM   | SPC/SYM | DEL/FN  |
 
             bindings = <
 &kp GRAVE         AS(Q)            AS(W)      AS(F)    AS(P)     AS(B)                AS(J)    AS(L)    AS(U)        AS(Y)        AS(SEMI)      &kp BSPC
 &lt EXTEND TAB    AS(A)            AS(R)      AS(S)    AS(T)     AS(G)                AS(M)    AS(N)    AS(E)        AS(I)        AS(O)         AS(APOS)
 &kp LCTRL         AS(Z)            AS(X)      AS(C)    AS(D)     AS(V)                AS(K)    AS(H)    AS(COMMA)    AS(DOT)      AS(FSLH)      &kp ENTER
-                  &skq LSHFT       &lt NUM BSPC        &hltr MEDIA 0                  &sl MACRO  &lt SYM SPACE  &lt FUNC DEL
-            >;
+                  &lt MACRO ENTER  &lt NUM BSPC        &hltr MEDIA 0             &sl SYM  &kp SPACE  &lt FUNC DEL
+            >; 
         };
         
         macro {
@@ -230,13 +230,13 @@
 // |     |  &  |  *  |  @  |  $  |  ^  | # |    |      |  UP  |       |      | LOCK |
 // |     |  |  |  [] |  {} |  () |  =  | # |    | LEFT | DOWN | RIGHT |      |      |
 // |     |     |  %  |  #  |  !  |  -  | # |    |      |      |       |      |      |
-//                   |     |  /  |  \  | # |    |   HELD   |      |
+//                   |  /  |     |  \  | # |    |   HELD   |      |
 
             bindings = <
 &trans  &kp AMPS    &kp STAR          &kp AT            &kp DLLR          &kp CARET     &trans     &trans    &kp UP    &trans     &trans   &kp K_LOCK
-&trans  &kp PIPE    &ht_tp RBKT LBKT  &ht_tp RBRC LBRC  &ht_tp RPAR LPAR  &kp EQUAL     &trans     &kp LEFT  &kp DOWN  &kp RIGHT  &trans   &trans
-&trans  &trans      &kp PRCNT         &kp HASH          &kp EXCL          &kp MINUS     &trans     &trans    &trans    &trans     &trans   &trans
-                                      &kp FSLH          &trans            &kp BSLH      &trans     &trans    &trans
+&trans  &kp PIPE    &ht_tp RBKT LBKT  &ht_tp RBRC LBRC  &ht_tp RPAR LPAR  AS(EQUAL)     &trans     &kp LEFT  &kp DOWN  &kp RIGHT  &trans   &trans
+&trans  &trans      &kp PRCNT         &kp HASH          &kp EXCL          AS(MINUS)     &trans     &trans    &trans    &trans     &trans   &trans
+                                      &kp FSLH          &trans            AS(BSLH)      &trans     &trans    &trans
             >;
         };
        
