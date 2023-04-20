@@ -184,14 +184,14 @@
 // -----------------------------------------------------------------------------------------------------------------------------
 // |   `        |   Q   |   W   |   F   |   P   |   B   | # |   J   |   L   |   U   |   Y   |   ;    | BSPC  |
 // | TAB/EXTEND |   A   |   R   |   S   |   T   |   G   | # |   M   |   N   |   E   |   I   |   O    |   '   |
-// | CTRL       |   Z   |   X   |   C   |   D   |   V   | # |   K   |   H   |   ,   |   .   |   /    | ENTER |
-//                  | SHIFT |  BSPC/NUM  | REPEAT/MEDIA | # |  SYM   | SPC/SYM | DEL/FN  |
+// | SHIFT      |   Z   |   X   |   C   |   D   |   V   | # |   K   |   H   |   ,   |   .   |   /    | ENTER |
+//                  | ENTER/MACRO |  BSPC/NUM  | REPEAT/MEDIA | # |  SYM   | SPC | DEL/FN  |
 
             bindings = <
 &kp GRAVE         AS(Q)            AS(W)      AS(F)    AS(P)     AS(B)                AS(J)    AS(L)    AS(U)        AS(Y)        AS(SEMI)      &kp BSPC
 &lt EXTEND TAB    AS(A)            AS(R)      AS(S)    AS(T)     AS(G)                AS(M)    AS(N)    AS(E)        AS(I)        AS(O)         AS(APOS)
-&kp LCTRL         AS(Z)            AS(X)      AS(C)    AS(D)     AS(V)                AS(K)    AS(H)    AS(COMMA)    AS(DOT)      AS(FSLH)      &kp ENTER
-                  &lt MACRO ENTER  &lt NUM BSPC        &hltr MEDIA 0             &sl SYM  &kp SPACE  &lt FUNC DEL
+&skq LSHFT        AS(Z)            AS(X)      AS(C)    AS(D)     AS(V)                AS(K)    AS(H)    AS(COMMA)    AS(DOT)      AS(FSLH)      &kp ENTER
+                  &sl MACRO        &lt NUM BSPC        &hltr MEDIA 0             &sl SYM  &kp SPACE  &lt FUNC DEL
             >; 
         };
         
@@ -218,7 +218,7 @@
 //                      |       |       |     | # |       |      |      |
 
             bindings = <
-&kp ESC  &trans     &trans    &kp ESC    &kp PSCRN   &trans        &kp LC(Y)     &kp HOME    &kp UP       &kp END      &kp DEL     &kp K_LOCK
+&kp ESC  &trans     &trans    &kp ESC    &kp PSCRN   &trans        &kp LC(Y)     &kp HOME    &kp UP       &kp END      &kp DEL     &kp DEL
 &trans   &kp LALT   &kp LGUI  &kp LSHFT  &kp LCTRL   &trans        &kp PG_UP     &kp LEFT    &kp DOWN     &kp RIGHT    &kp BSPC    &trans
 &trans   &kp LC(Z)  &kp LC(X) &kp LC(C)  &kp LC(V)   &trans        &kp PG_DN     &kp LC(Z)   &key_repeat  &kp LC(Y)    &caps_word
                               &trans     &trans      &trans        &trans        &trans      &trans
@@ -226,14 +226,14 @@
         };
 
         sym {
-// --------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 // |     |     |  @  |  $  |  %  |  `  | # |  |  |  ^  |  *  |  =  |     | LOCK |
 // |     |  &  |  [  |  {  |  (  |  -  | # |  +  |  )  |  }  |  ]  |  ~  |  "   |
 // |     |     |  _  |  #  |  !  |  ;  | # |  :  |  "  |  <  |  >  |  ?  |      |
 //                   |  /  |     |  \  | # | STKY  |     |      |
 
             bindings = <
-&trans  &trans    &kp AT     &kp DLLR   &kp PRCNT  &kp GRAVE        &kp PIPE   &kp CARET  &kp STAR  &kp EQUAL  &trans     &kp K_LOCK
+&trans  &trans    &kp AT     &kp DLLR   &kp PRCNT  &kp GRAVE        &kp PIPE   &kp CARET  &kp STAR  &kp EQUAL  &trans     &kp C_AL_LOCK
 &trans  &kp AMPS  &kp LBKT   &kp LBRC   &kp LPAR   &kp MINUS        &kp PLUS   &kp RPAR   &kp RBRC  &kp RBKT   &kp TILDE  &kp DQT
 &trans  &trans    &kp UNDER  &kp HASH   &kp EXCL   &kp SEMI         &kp COLON  &kp DQT    &kp LT    &kp GT     &kp QMARK  &trans
                              &kp FSLH   &trans     &kp BSLH         &trans     &trans     &trans
@@ -247,13 +247,13 @@
 // --------------------------------------------------------------------------------------
 // |     |  1  |  2  |  3  |  4   |  5  | # |  6  |   7   |   8   |   9   |   0   |     |
 // |     |  1  |  2  |  3  |  4   |  5  | # |  -  |   4   |   5   |   6   |       |     |
-// |     |     |     |     |      |     | # |  =  |   1   |   2   |   3   |   .   |     |
+// |     |  6  |  7  |  8  |  9   |  0  | # |  =  |   1   |   2   |   3   |   .   |     |
 //                   |     | HELD |     | # |  /  |   0   |   .   |
 
             bindings = <
 &trans  AS(N1)    AS(N2)    AS(N3)    AS(N4)    AS(N5)        AS(N6)     AS(N7)  AS(N8)  AS(N9)  AS(N0)    &trans
 &trans  AS(N1)    AS(N2)    AS(N3)    AS(N4)    AS(N5)        &kp MINUS  &kp N4  &kp N5  &kp N6  &trans    &trans
-&trans  &trans    &trans    &trans    &trans    &trans        AS(EQUAL)  &kp N1  &kp N2  &kp N3  &kp DOT   &trans
+&trans  AS(N6)    AS(N7)    AS(N8)    AS(N9)    AS(N0)        AS(EQUAL)  &kp N1  &kp N2  &kp N3  &kp DOT   &trans
                             &trans    &trans    &trans        &kp FSLH   &kp N0  &kp DOT
             >;
         };
