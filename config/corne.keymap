@@ -227,16 +227,16 @@
 
         sym {
 // --------------------------------------------------------------------------------------
-// |     |     |  @  |  $  |  %  |     | # |     |  ^  |  *  |  =  |     | LOCK |
-// |     |  &  |  [  |  {  |  (  |  -  | # |  +  |  )  |  }  |  ]  |  ~  |      |
-// |     |     |  _  |  #  |  !  |  `  | # |  |  |  ?  |  <  |  >  |     |      |
+// |     |     |  @  |  $  |  %  |  `  | # |  |  |  ^  |  *  |  =  |     | LOCK |
+// |     |  &  |  [  |  {  |  (  |  -  | # |  +  |  )  |  }  |  ]  |  ~  |  "   |
+// |     |     |  _  |  #  |  !  |  ;  | # |  :  |  "  |  <  |  >  |  ?  |      |
 //                   |  /  |     |  \  | # | STKY  |     |      |
 
             bindings = <
-&trans  &trans    &kp AT     &kp DLLR   &kp PRCNT  &trans           &trans    &kp CARET  &kp STAR  &kp EQUAL  &trans     &kp K_LOCK
-&trans  &kp AMPS  &kp LBKT   &kp LBRC   &kp LPAR   &kp MINUS        &kp PLUS  &kp RPAR   &kp RBRC  &kp RBKT   &kp TILDE  &trans
-&trans  &trans    &kp UNDER  &kp HASH   &kp EXCL   &kp GRAVE        &kp PIPE  &kp QMARK  &kp LT    &kp GT     &trans     &trans
-                             &kp FSLH   &trans     &kp BSLH         &trans     &trans    &trans
+&trans  &trans    &kp AT     &kp DLLR   &kp PRCNT  &kp GRAVE        &kp PIPE   &kp CARET  &kp STAR  &kp EQUAL  &trans     &kp K_LOCK
+&trans  &kp AMPS  &kp LBKT   &kp LBRC   &kp LPAR   &kp MINUS        &kp PLUS   &kp RPAR   &kp RBRC  &kp RBKT   &kp TILDE  &kp DQT
+&trans  &trans    &kp UNDER  &kp HASH   &kp EXCL   &kp SEMI         &kp COLON  &kp DQT    &kp LT    &kp GT     &kp QMARK  &trans
+                             &kp FSLH   &trans     &kp BSLH         &trans     &trans     &trans
             >;
         };
        
