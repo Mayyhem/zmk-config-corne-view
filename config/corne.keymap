@@ -79,6 +79,22 @@
             tapping-term-ms = <120>;
             flavor = "tap-preferred";
         };
+        hmtsk: hold_mod_tap_sticky_key {
+            label = "HOLD_MOD_TAP_STICKY_KEY";
+            #binding-cells = <2>;
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&mo>, <&skq>;
+            tapping-term-ms = <120>;
+            flavor = "tap-preferred";
+        };
+        hmtsk: hold_mod_tap_sticky_layer {
+            label = "HOLD_MOD_TAP_STICKY_LAYER";
+            #binding-cells = <2>;
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&mo>, <&sl>;
+            tapping-term-ms = <120>;
+            flavor = "tap-preferred";
+        };
     };
    
     combos {
@@ -184,14 +200,14 @@
 // -----------------------------------------------------------------------------------------------------------------------------
 // |   `        |   Q   |   W   |   F   |   P   |   B   | # |   J   |   L   |   U   |   Y   |   ;    | BSPC  |
 // | TAB/EXTEND |   A   |   R   |   S   |   T   |   G   | # |   M   |   N   |   E   |   I   |   O    |   '   |
-// | SHIFT      |   Z   |   X   |   C   |   D   |   V   | # |   K   |   H   |   ,   |   .   |   /    | ENTER |
-//                  | ENTER/MACRO |  BSPC/NUM  | REPEAT/MEDIA | # |  SYM   | SPC | DEL/FN  |
+// | CTRL       |   Z   |   X   |   C   |   D   |   V   | # |   K   |   H   |   ,   |   .   |   /    | ENTER |
+//                  |  MACRO |  BSPC/NUM  | REPEAT/MEDIA | # |  SYM   | SPC | DEL/FN  |  
 
-            bindings = <
-&kp GRAVE         AS(Q)            AS(W)      AS(F)    AS(P)     AS(B)                AS(J)    AS(L)    AS(U)        AS(Y)        AS(SEMI)      &kp BSPC
-&lt EXTEND TAB    AS(A)            AS(R)      AS(S)    AS(T)     AS(G)                AS(M)    AS(N)    AS(E)        AS(I)        AS(O)         AS(APOS)
-&skq LSHFT        AS(Z)            AS(X)      AS(C)    AS(D)     AS(V)                AS(K)    AS(H)    AS(COMMA)    AS(DOT)      AS(FSLH)      &kp ENTER
-                  &sl MACRO        &lt NUM BSPC        &hltr MEDIA 0             &sl SYM  &kp SPACE  &lt FUNC DEL
+            bindings = <   
+&kp GRAVE          AS(Q)            AS(W)      AS(F)    AS(P)     AS(B)                AS(J)    AS(L)    AS(U)        AS(Y)        AS(SEMI)      &kp BSPC
+&lt EXTEND TAB     AS(A)            AS(R)      AS(S)    AS(T)     AS(G)                AS(M)    AS(N)    AS(E)        AS(I)        AS(O)         AS(APOS)
+&hmtsk LCTRL LSHFT  AS(Z)            AS(X)      AS(C)    AS(D)     AS(V)                AS(K)    AS(H)    AS(COMMA)    AS(DOT)      AS(FSLH)      &kp ENTER
+                   &hmtsl MEDIA MACRO   &lt EXTEND BSPC   &hmtsl LSHFT NUM                 &sl SYM  &kp SPACE  &hltr FUNC 0
             >; 
         };
         
