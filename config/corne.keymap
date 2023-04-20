@@ -87,7 +87,7 @@
             tapping-term-ms = <120>;
             flavor = "tap-preferred";
         };
-        hmtsk: hold_mod_tap_sticky_layer {
+        hmtsl: hold_mod_tap_sticky_layer {
             label = "HOLD_MOD_TAP_STICKY_LAYER";
             #binding-cells = <2>;
             compatible = "zmk,behavior-hold-tap";
