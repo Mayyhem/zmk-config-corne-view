@@ -215,7 +215,7 @@
 &kp GRAVE           &kp Q            &kp W      &kp F    &kp P     &kp B                &kp J    &kp L    &kp U        &kp Y        &kp SEMI      &kp BSPC
 &lt EXTEND TAB      &kp A            &kp R      &kp S    &kp T     &kp G                &kp M    &kp N    &kp E        &kp I        &kp O         &kp APOS
 &hmtsk LCTRL LSHFT  &kp Z            &kp X      &kp C    &kp D     &kp V                &kp K    &kp H    &kp COMMA    &kp DOT      &kp FSLH      &mt LSHFT ENTER
-                    &hltsl MEDIA MACRO   &lt EXTEND BSPC   &hltsk NUM LSHFT                &sl SYM  &kp SPACE  &hltr FUNC 0
+                    &hltsl MEDIA MACRO   &lt EXTEND BSPC   &hltsk NUM LSHFT             &sl SYM  &kp SPACE  &hltr FUNC 0
             >; 
         };
         
@@ -223,8 +223,8 @@
 // -----------------------------------------------------------------------------------------------------------------------------
 // |     |   que  |  with |  for  |   P   |   B   | # |   J   |   L   |   U   |  you  |   ;    |       |
 // |     |   and  |   R   |   S   |  the  |  ing  | # |  ment |   N   | every |  ion  |  ough  |       |
-// |     |   Z    |   X   |   C   |  ould |   V   | # |   K   |  here |   ,   |   .   |   /    |       |
-//                        |       |       |       | # | HELD  |       |       |
+// |     |   Z    | email | email |  ould |   V   | # |   K   |  here |   ,   |   .   |   /    |       |
+//                        | HELD  |       |       | # |       |       |       |
 
             bindings = <
 &trans         &mac_q      &mac_w      &mac_f    &trans     &trans                &trans    &trans    &trans        &mac_y        &trans      &trans
