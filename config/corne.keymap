@@ -8,13 +8,11 @@
 #define COLEMAK 0
 #define MACRO 1
 #define EXTEND 2
-#define SYML 3
-#define SYMR 4
-#define NUML 5
-#define NUMR 6
-#define FUNC 7
-#define MEDIA 8
-#define MOUSE 9
+#define SYM 3
+#define NUM 4
+#define FUNC 5
+#define MEDIA 6
+#define MOUSE 7
 
 // Macros
 #define AS(keycode) &as LS(keycode) keycode     // Autoshift Macro				
