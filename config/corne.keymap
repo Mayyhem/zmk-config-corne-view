@@ -119,7 +119,7 @@
             timeout-ms = <100>;
             key-positions = <33 34>;
             bindings = <&kp ENTER>;
-        }
+        };
         combo_thumbs_capsword {
             timeout-ms = <100>;
             key-positions = <38 39>;
