@@ -8,14 +8,19 @@
 #define COLEMAK 0
 #define MACRO 1
 #define EXTEND 2
-#define SYM 3
-#define NUM 4
-#define FUNC 5
-#define MEDIA 6
-#define MOUSE 7
+#define SYML 3
+#define SYMR 4
+#define NUML 5
+#define NUMR 6
+#define FUNC 7
+#define MEDIA 8
+#define MOUSE 9
 
 // Macros
 #define AS(keycode) &as LS(keycode) keycode     // Autoshift Macro				
+
+// To do
+// - find a place for FUNC, MEDIA, and MOUSE to be toggled, maybe both thumbs toggles a selection layer?
 
 // Backspace/delete multiple on double tap hold
 &lt {
@@ -108,14 +113,29 @@
     combos {
         compatible = "zmk,combos";
         combo_qw_esc {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
             key-positions = <1 2>;
             bindings = <&kp ESC>;
         };
-        combo_dotslash_dotdotslash {
-            timeout-ms = <50>;
+        combo_dotslash_enter {
+            timeout-ms = <100>;
             key-positions = <33 34>;
-            bindings = <&kp DOT &kp DOT &kp FSLH>;
+            bindings = <&kp ENTER>;
+        }
+        combo_thumbs_capsword {
+            timeout-ms = <100>;
+            key-positions = <38 39>;
+            bindings = <&caps_word>;
+        };
+        combo_ysemi_repeat {
+            timeout-ms = <100>;
+            key-positions = <9 10>;
+            bindings = <&key_repeat>;
+        };
+        combo_zx_shift {
+            timeout-ms = <100>;
+            key-positions = <25 26>;
+            bindings = <&skq LSHFT>;
         };
     };
     
@@ -208,14 +228,14 @@
 // -----------------------------------------------------------------------------------------------------------------------------
 // |   `        |   Q   |   W   |   F   |   P   |   B   | # |   J   |   L   |   U   |   Y   |   ;    | BSPC  |
 // | TAB/EXTEND |   A   |   R   |   S   |   T   |   G   | # |   M   |   N   |   E   |   I   |   O    |   '   |
-// | CTRL/SHIFT |   Z   |   X   |   C   |   D   |   V   | # |   K   |   H   |   ,   |   .   |   /    | ENTER/SHIFT |
-//                  |  MACRO/MEDIA |  BSPC/EXTEND  | SHIFT/NUM | # |  SYM   | SPC | REPEAT/FUNC |  
+// | CTRL       |   Z   |   X   |   C   |   D   |   V   | # |   K   |   H   |   ,   |   .   |   /    | ENTER/SHIFT |
+//                  |  MACRO |  BSPC/EXTEND  | SHIFT | # |  SYM  |  SPC  |  NUM  |  
 
             bindings = <   
 &kp GRAVE           &kp Q            &kp W      &kp F    &kp P     &kp B                &kp J    &kp L    &kp U        &kp Y        &kp SEMI      &kp BSPC
 &lt EXTEND TAB      &kp A            &kp R      &kp S    &kp T     &kp G                &kp M    &kp N    &kp E        &kp I        &kp O         &kp APOS
-&hmtsk LCTRL LSHFT  &kp Z            &kp X      &kp C    &kp D     &kp V                &kp K    &kp H    &kp COMMA    &kp DOT      &kp FSLH      &mt LSHFT ENTER
-                    &hltsl MEDIA MACRO   &lt EXTEND BSPC   &hltsk NUM LSHFT             &sl SYM  &kp SPACE  &hltr FUNC 0
+&skq LCTRL          &kp Z            &kp X      &kp C    &kp D     &kp V                &kp K    &kp H    &kp COMMA    &kp DOT      &kp FSLH      &mt LSHFT ENTER
+                             &sl MACRO     &lt EXTEND BSPC   &skq LSHFT                 &sl SYM  &kp SPACE  &sl NUM
             >; 
         };
         
@@ -224,7 +244,7 @@
 // |     |   que  |  with |  for  |   P   |   B   | # |   J   |   L   |   U   |  you  |   ;    |       |
 // |     |   and  |   R   |   S   |  the  |  ing  | # |  ment |   N   | every |  ion  |  ough  |       |
 // |     |   Z    | email | email |  ould |   V   | # |   K   |  here |   ,   |   .   |   /    |       |
-//                        | HELD  |       |       | # |       |       |       |
+//                        | STK   |       |       | # |       |       |       |
 
             bindings = <
 &trans         &mac_q      &mac_w      &mac_f    &trans     &trans                &trans    &trans    &trans        &mac_y        &trans      &trans
@@ -239,7 +259,7 @@
 // | ESC  |      |      | ESC   | PSCRN |     | # | REDO  | HOME | UP   | END   | DELETE | LOCK |
 // | HELD | LALT | LGUI | LSHFT | LCTRL |     | # | PG_UP | LEFT | DOWN | RIGHT | BSPC   |      |
 // |      | UNDO | CUT  | COPY  | PASTE |     | # | PG_DN | UNDO | RPT  | REDO  | CPSWRD |      |
-//                      |       |       |     | # |       |      |      |
+//                      |       | HELD  |     | # |       |      |      |
 
             bindings = <
 &kp ESC  &trans     &trans    &kp ESC    &kp PSCRN   &trans        &kp LC(Y)     &kp HOME    &kp UP       &kp END      &kp DEL     &kp DEL
@@ -254,7 +274,7 @@
 // |     |     |  @  |  $  |  %  |  `  | # |  |  |  ^  |  *  |  =  |     | LOCK |
 // |     |  &  |  [  |  {  |  (  |  -  | # |  +  |  )  |  }  |  ]  |  ~  |  "   |
 // |     |     |  _  |  #  |  !  |  ;  | # |  :  |  "  |  <  |  >  |  ?  |      |
-//                   |  /  |     |  \  | # | STKY  |     |      |
+//                   |  /  |     |  \  | # | STK |     |      |
 
             bindings = <
 &trans  &trans    &kp AT     &kp DLLR   &kp PRCNT  &kp GRAVE        &kp PIPE   &kp CARET  &kp STAR  &kp EQUAL  &trans     &kp K_LOCK
@@ -264,15 +284,12 @@
             >;
         };
        
-// To do: backspace available through trans to extend layer
-// To do: Left side symbols available through trans to sym layer
-
         num {
 // --------------------------------------------------------------------------------------
 // |     |  !  |  @  |  #  |  $   |  %   | # |  ^  |   &   |   *   |   (   |   )   |     |
 // |     |  1  |  2  |  3  |  4   |  5   | # |  6  |   7   |   8   |   9   |   0   |     |
 // |     |     |     |     |      |      | # |     |       |   ,   |   .   |   /   |     |
-//                   |     |      | HELD | # |     |       |       |
+//                   |     |      |      | # |     |       |  STK  |
 
             bindings = <
 &trans  &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT     &kp CARET  &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR  &trans
