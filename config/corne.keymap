@@ -216,6 +216,16 @@
             #binding-cells = <0>;
             bindings = <&macro_tap &kp Y &kp O &kp U>;
         };
+        mac_lock: mac_lock {
+            label = "macro_lock";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings 
+                = <&macro_press &kp LGUI>
+                , <&macro_tap &kp L>
+                , <&macro_release &kp LGUI>
+                ;
+        };
     };
     
 // Keymap configuration (Colemak-DHm)
@@ -269,15 +279,15 @@
 
         sym {
 // ------------------------------------------------------------------------------
-// |     |     |  @  |  $  |  %  |  `  | # |  |  |  ^  |  *  |  =  |     | LOCK |
-// |     |  &  |  [  |  {  |  (  |  -  | # |  +  |  )  |  }  |  ]  |  ~  |  "   |
-// |     |     |  _  |  #  |  !  |  ;  | # |  :  |  "  |  <  |  >  |  ?  |      |
+// |     |     |  @  |  $  |  %  |  :  | # |     |  ^  |  *  |  =  |     | LOCK |
+// |     |  &  |  [  |  {  |  (  |  -  | # |  +  |  )  |  }  |  ]  |  ;  |      |
+// |     |     |  _  |  #  |  !  |  `  | # |  ~  |  |  |  <  |  >  |  ?  |      |
 //                   |  /  |     |  \  | # | STK |     |      |
 
             bindings = <
-&trans  &trans    &kp AT     &kp DLLR   &kp PRCNT  &kp GRAVE        &kp PIPE   &kp CARET  &kp STAR  &kp EQUAL  &trans     &kp K_LOCK
-&trans  &kp AMPS  &kp LBKT   &kp LBRC   &kp LPAR   &kp MINUS        &kp PLUS   &kp RPAR   &kp RBRC  &kp RBKT   &kp TILDE  &kp DQT
-&trans  &trans    &kp UNDER  &kp HASH   &kp EXCL   &kp SEMI         &kp COLON  &kp DQT    &kp LT    &kp GT     &kp QMARK  &trans
+&trans  &trans    &kp AT     &kp DLLR   &kp PRCNT  &kp COLON        &trans     &kp CARET  &kp STAR  &kp EQUAL  &trans     &mac_lock
+&trans  &kp AMPS  &kp LBKT   &kp LBRC   &kp LPAR   &kp MINUS        &kp PLUS   &kp RPAR   &kp RBRC  &kp RBKT   &kp SEMI   &trans
+&trans  &trans    &kp UNDER  &kp HASH   &kp EXCL   &kp GRAVE        &kp TILDE  &kp PIPE   &kp LT    &kp GT     &kp QMARK  &trans
                              &kp FSLH   &trans     &kp BSLH         &trans     &trans     &trans
             >;
         };
