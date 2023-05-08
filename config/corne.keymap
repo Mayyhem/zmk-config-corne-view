@@ -234,16 +234,16 @@
         
         colemak {
 // -----------------------------------------------------------------------------------------------------------------------------
-// |   `        |   Q   |   W   |   F   |   P   |   B   | # |   J   |   L   |   U   |   Y   |   ;    | BSPC  |
-// | TAB/EXTEND |   A   |   R   |   S   |   T   |   G   | # |   M   |   N   |   E   |   I   |   O    |   '   |
+// |   `        |   Q   |   W   |   F   |   P   |   B   | # |   J   |   L   |   U   |   Y   |   '    | BSPC  |
+// | TAB/EXTEND |   A   |   R   |   S   |   T   |   G   | # |   M   |   N   |   E   |   I   |   O    |   ;   |
 // | CTRL       |   Z   |   X   |   C   |   D   |   V   | # |   K   |   H   |   ,   |   .   |   /    | ENTER/SHIFT |
-//                  |  MACRO |  BSPC/EXTEND  | SHIFT | # |  SYM  |  SPC  |  NUM  |  
+//                         | NUM |  BSPC/EXTEND | SHIFT | # |  SYM  |  SPC  |  MACRO  |  
 
             bindings = <   
-&kp GRAVE           &kp Q            &kp W      &kp F    &kp P     &kp B                &kp J    &kp L    &kp U        &kp Y        &kp SEMI      &kp BSPC
-&lt EXTEND TAB      &kp A            &kp R      &kp S    &kp T     &kp G                &kp M    &kp N    &kp E        &kp I        &kp O         &kp APOS
+&kp GRAVE           &kp Q            &kp W      &kp F    &kp P     &kp B                &kp J    &kp L    &kp U        &kp Y        &kp APOS      &kp BSPC
+&lt EXTEND TAB      &kp A            &kp R      &kp S    &kp T     &kp G                &kp M    &kp N    &kp E        &kp I        &kp O         &kp SEMI
 &skq LCTRL          &kp Z            &kp X      &kp C    &kp D     &kp V                &kp K    &kp H    &kp COMMA    &kp DOT      &kp FSLH      &mt LSHFT ENTER
-                             &sl MACRO     &lt EXTEND BSPC   &skq LSHFT                 &sl SYM  &kp SPACE  &sl NUM
+                                  &sl NUM   &lt EXTEND BSPC   &skq LSHFT                &sl SYM  &kp SPACE  &sl MACRO
             >; 
         };
         
@@ -252,7 +252,7 @@
 // |     |   que  |  with |  for  |   P   |   B   | # |   J   |   L   |   U   |  you  |   ;    |       |
 // |     |   and  |   R   |   S   |  the  |  ing  | # |  ment |   N   | every |  ion  |  ough  |       |
 // |     |   Z    | email | email |  ould |   V   | # |   K   |  here |   ,   |   .   |   /    |       |
-//                        | STK   |       |       | # |       |       |       |
+//                        |       |       |       | # |       |       |  STK  |
 
             bindings = <
 &trans         &mac_q      &mac_w      &mac_f    &trans     &trans                &trans    &trans    &trans        &mac_y        &trans      &trans
@@ -264,46 +264,46 @@
 
         extend {
 // -------------------------------------------------------------------------------------------
-// | ESC  |      |      | ESC   | PSCRN |     | # | REDO  | HOME | UP   | END   | DELETE | LOCK |
+// | ESC  |      |      |       | PSCRN |     | # | REDO  | HOME | UP   | END   | DELETE |      |
 // | HELD | LALT | LGUI | LSHFT | LCTRL |     | # | PG_UP | LEFT | DOWN | RIGHT | BSPC   |      |
-// |      | UNDO | CUT  | COPY  | PASTE |     | # | PG_DN | UNDO | RPT  | REDO  | CPSWRD |      |
+// |      | UNDO | CUT  | COPY  | PASTE |     | # | PG_DN |      |      |       |        |      |
 //                      |       | HELD  |     | # |       |      |      |
 
             bindings = <
-&kp ESC  &trans     &trans    &kp ESC    &kp PSCRN   &trans        &kp LC(Y)     &kp HOME    &kp UP       &kp END      &kp DEL     &kp DEL
-&trans   &kp LALT   &kp LGUI  &kp LSHFT  &kp LCTRL   &trans        &kp PG_UP     &kp LEFT    &kp DOWN     &kp RIGHT    &kp BSPC    &trans
-&trans   &kp LC(Z)  &kp LC(X) &kp LC(C)  &kp LC(V)   &trans        &kp PG_DN     &kp LC(Z)   &key_repeat  &kp LC(Y)    &caps_word
-                              &trans     &trans      &trans        &trans        &trans      &trans
+&kp ESC    &trans     &trans    &trans     &kp PSCRN   &trans        &kp LC(Y)     &kp HOME    &kp UP       &kp END      &kp DEL     &trans
+&trans     &kp LALT   &kp LGUI  &kp LSHFT  &kp LCTRL   &trans        &kp PG_UP     &kp LEFT    &kp DOWN     &kp RIGHT    &kp BSPC    &trans
+&trans     &kp LC(Z)  &kp LC(X) &kp LC(C)  &kp LC(V)   &trans        &kp PG_DN     &trans      &trans       &trans    &trans
+                                &trans     &trans      &trans        &trans        &trans      &trans
             >;
         };
 
         sym {
 // ------------------------------------------------------------------------------
-// |     |     |  @  |  $  |  %  |  :  | # |     |  ^  |  *  |  =  |     | LOCK |
+// |     |     |  @  |  $  |  %  |  :  | # |  ;  |  ^  |  *  |  =  |  -  | LOCK |
 // |     |  &  |  [  |  {  |  (  |  -  | # |  +  |  )  |  }  |  ]  |  ;  |      |
 // |     |     |  _  |  #  |  !  |  `  | # |  ~  |  |  |  <  |  >  |  ?  |      |
-//                   |  /  |     |  \  | # | STK |     |      |
+//                   |  /  |  -  |  \  | # | STK |     |      |
 
             bindings = <
-&trans  &trans    &kp AT     &kp DLLR   &kp PRCNT  &kp COLON        &trans     &kp CARET  &kp STAR  &kp EQUAL  &trans     &mac_lock
+&trans  &trans    &kp AT     &kp DLLR   &kp PRCNT  &kp COLON        &kp SEMI   &kp CARET  &kp STAR  &kp EQUAL  &kp MINUS  &mac_lock
 &trans  &kp AMPS  &kp LBKT   &kp LBRC   &kp LPAR   &kp MINUS        &kp PLUS   &kp RPAR   &kp RBRC  &kp RBKT   &kp SEMI   &trans
 &trans  &trans    &kp UNDER  &kp HASH   &kp EXCL   &kp GRAVE        &kp TILDE  &kp PIPE   &kp LT    &kp GT     &kp QMARK  &trans
-                             &kp FSLH   &trans     &kp BSLH         &trans     &trans     &trans
+                             &kp FSLH   &kp MINUS  &kp BSLH         &trans     &trans     &trans
             >;
         };
        
         num {
 // --------------------------------------------------------------------------------------
-// |     |  !  |  @  |  #  |  $   |  %   | # |  ^  |   &   |   *   |   (   |   )   |     |
 // |     |  1  |  2  |  3  |  4   |  5   | # |  6  |   7   |   8   |   9   |   0   |     |
-// |     |     |     |     |      |      | # |     |       |   ,   |   .   |   /   |     |
-//                   |     |      |      | # |     |       |  STK  |
+// |     |  !  |  @  |  #  |  $   |  %   | # |  +  |   4   |   5   |   6   |       |     |
+// |     |     |     |     |      |      | # |  -  |   1   |   2   |   3   |       |     |
+//                   | STK |      |      | # |  .  |       |   ,   |
 
             bindings = <
-&trans  &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT     &kp CARET  &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR  &trans
 &trans  &kp N1    &kp N2    &kp N3    &kp N4    &kp N5        &kp N6     &kp N7    &kp N8    &kp N9    &kp N0    &trans
-&trans  &trans    &trans    &trans    &trans    &trans        &trans     &trans    &trans    &trans    &trans    &trans
-                            &trans    &trans    &trans        &trans     &trans    &trans
+&trans  &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT     &kp PLUS   &kp N4    &kp N5    &kp N6    &trans    &trans
+&trans  &trans    &trans    &trans    &trans    &trans        &kp MINUS  &kp N1    &kp N2    &kp N3    &trans    &trans
+                            &trans    &trans    &trans        &kp DOT    &trans    &kp COMMA
             >;
         };
         
