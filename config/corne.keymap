@@ -264,16 +264,16 @@
 
         extend {
 // -------------------------------------------------------------------------------------------
-// | ESC  |      |      |       | PSCRN |     | # | REDO  | HOME | UP   | END   | DELETE |      |
+// | ESC  | PREV | PLAY | NEXT  | PSCRN |     | # | REDO  | HOME | UP   | END   | DELETE |      |
 // | HELD | LALT | LGUI | LSHFT | LCTRL |     | # | PG_UP | LEFT | DOWN | RIGHT | BSPC   |      |
-// |      | UNDO | CUT  | COPY  | PASTE |     | # | PG_DN |      |      |       |        |      |
+// |      | UNDO | CUT  | COPY  | PASTE |     | # | PG_DN | VOLD | MUTE | VOLU  | DELETE |      |
 //                      |       | HELD  |     | # |       |      |      |
 
             bindings = <
-&kp ESC    &trans     &trans    &trans     &kp PSCRN   &trans        &kp LC(Y)     &kp HOME    &kp UP       &kp END      &kp DEL     &trans
-&trans     &kp LALT   &kp LGUI  &kp LSHFT  &kp LCTRL   &trans        &kp PG_UP     &kp LEFT    &kp DOWN     &kp RIGHT    &kp BSPC    &trans
-&trans     &kp LC(Z)  &kp LC(X) &kp LC(C)  &kp LC(V)   &trans        &kp PG_DN     &trans      &trans       &trans    &trans
-                                &trans     &trans      &trans        &trans        &trans      &trans
+&kp ESC    &kp K_PREV &kp K_PP   &kp K_NEXT &kp PSCRN   &trans        &kp LC(Y)     &kp HOME      &kp UP       &kp END      &kp DEL     &trans
+&trans     &kp LALT   &kp LGUI   &kp LSHFT  &kp LCTRL   &trans        &kp PG_UP     &kp LEFT      &kp DOWN     &kp RIGHT    &kp BSPC    &trans
+&trans     &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)   &trans        &kp PG_DN     &kp K_VOL_DN  &kp K_MUTE   &kp K_VOL_UP &kp DEL
+                                 &trans     &trans      &trans        &trans        &trans      &trans
             >;
         };
 
