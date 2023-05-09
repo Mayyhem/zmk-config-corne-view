@@ -339,7 +339,7 @@
 //                   |  /  |     |  \  | # | STK |     |     | 
 
             bindings = <
-&trans  &kp GRAVE  &kp AT     &kp DLLR   &kp PIPE   &trans           &kp CARET  &kp AMP    &kp STAR  &kp EQUAL  &kp MINUS  &mac_lock
+&trans  &kp GRAVE  &kp AT     &kp DLLR   &kp PIPE   &trans           &kp CARET  &kp AMPS   &kp STAR  &kp EQUAL  &kp MINUS  &mac_lock
 &trans  &kp UNDER  &mac_obkt  &mac_obrc  &mac_opar  &kp MINUS        &kp PLUS   &kp RPAR   &kp RBRC  &kp RBKT   &kp BSLH   &trans
 &trans  &kp COLON  &kp PRCNT  &kp EXCL   &kp HASH   &kp SEMI         &trans     &kp TILDE  &kp LT    &kp GT     &kp FSLH   &trans
                               &kp FSLH   &trans     &kp BSLH         &trans     &trans     &trans
