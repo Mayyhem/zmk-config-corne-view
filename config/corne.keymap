@@ -297,7 +297,7 @@
 &kp GRAVE           &kp Q            &kp W       &kp F           &kp P         &kp B                &kp J    &kp L        &kp U           &kp Y        &kp APOS      &kp BSPC
 &lt EXTEND TAB      &hm LGUI A       &hm LALT R  &hshft LSHFT S  &hm LCTRL T   &kp G                &kp M    &hm RCTRL N  &hshft RSHFT E  &hm RALT I   &hm RGUI O    &kp SEMI
 &skq LCTRL          &kp Z            &kp X       &kp C           &kp D         &kp V                &kp K    &kp H        &kp COMMA       &kp DOT      &kp FSLH      &mt LSHFT ENTER
-                                              &tog NUM   &lt EXTEND BSPC  &sqk LSHFT                &sl SYM  &kp SPACE    &sl MACRO
+                                              &tog NUM   &lt EXTEND BSPC  &skq LSHFT                &sl SYM  &kp SPACE    &sl MACRO
             >; 
         };
         
