@@ -354,7 +354,7 @@
 //                   | STK |     |     | # |  .  |     |  -  |
 
             bindings = <
-&trans  &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT     &kp CARET  &kp AMP   &kp STAR   &kp EQUAL  &kp MINUS  &trans
+&trans  &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT     &kp CARET  &kp AMPS  &kp STAR   &kp EQUAL  &kp MINUS  &trans
 &trans  &kp N1    &kp N2    &kp N3    &kp N4    &kp N5        &kp N6     &kp N7    &kp N8     &kp N9     &kp N0     &kp PLUS
 &trans  &trans    &trans    &trans    &trans    &trans        &trans     &kp BSLH  &kp COMMA  &kp DOT    &kp FSLH   &kp ENTER
                             &trans    &trans    &trans        &kp DOT    &trans    &kp MINUS
