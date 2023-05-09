@@ -120,6 +120,11 @@
             key-positions = <32 33>;
             bindings = <&kp ENTER>;
         };        
+        combo_dotslash_dotdotslash {
+            timeout-ms = <50>;
+            key-positions = <33 34>;
+            bindings = <&mac_dotslash>;
+        };      
         combo_insidethumbs_capsword {
             timeout-ms = <50>;
             key-positions = <38 39>;
@@ -153,7 +158,7 @@
         combo_wf_tab {
             timeout-ms = <50>;
             key-positions = <2 3>;
-            bindings = <&kp ENTER>;
+            bindings = <&kp TAB>;
         };
         combo_yquote_del {
             timeout-ms = <50>;
@@ -251,6 +256,12 @@
             #binding-cells = <0>;
             bindings = <&macro_tap &kp Y &kp O &kp U>;
         };
+        mac_dotslash: mac_dotslash {
+            label = "mac_dotslash";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp DOT &kp DOT &kp FSLH>;
+        };    
         mac_lock: mac_lock {
             label = "macro_lock";
             compatible = "zmk,behavior-macro";
