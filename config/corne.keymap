@@ -302,13 +302,13 @@
 // |   `        |   Q   |   W   |   F   |   P   |   B   | # |   J   |   L   |   U   |   Y   |   '    | BSPC  |
 // | TAB/EXTEND |   A   |   R   |   S   |   T   |   G   | # |   M   |   N   |   E   |   I   |   O    |   ;   |
 // | CTRL       |   Z   |   X   |   C   |   D   |   V   | # |   K   |   H   |   ,   |   .   |   /    | ENTER/SHIFT |
-//                         | MACRO |  BSPC/EXTEND | SHIFT/NUM | # |  SYM  |  SPC  |  MACRO  |  
+//                         | NUM |  BSPC/EXTEND | SHIFT | # |  SYM  |  SPC  |  MACRO  |  
 
             bindings = <   
 &kp GRAVE           &kp Q            &kp W       &kp F           &kp P         &kp B                &kp J    &kp L        &kp U           &kp Y        &kp APOS      &kp BSPC
 &lt EXTEND TAB      &hm LGUI A       &hm LALT R  &hshft LSHFT S  &hm LCTRL T   &kp G                &kp M    &hm RCTRL N  &hshft RSHFT E  &hm RALT I   &hm RGUI O    &kp SEMI
 &skq LCTRL          &kp Z            &kp X       &kp C           &kp D         &kp V                &kp K    &kp H        &kp COMMA       &kp DOT      &kp FSLH      &mt LSHFT ENTER
-                                              &tog NUM   &lt EXTEND BSPC  &skq LSHFT                &sl SYM  &kp SPACE    &sl MACRO
+                                              &sl NUM   &lt EXTEND BSPC  &skq LSHFT                &sl SYM  &kp SPACE    &sl MACRO
             >; 
         };
         
@@ -361,13 +361,13 @@
 // -----------------------------------------------------------------------------
 // |     |  !  |  @  |  #  |  $  |  %  | # |  ^  |  &  |  *  |  =  |  -  |       |
 // |     |  1  |  2  |  3  |  4  |  5  | # |  6  |  7  |  8  |  9  |  0  |   +   |
-// |     |     |     |     |     |     | # |     |  \  |  ,  |  .  |  /  | ENTER |
+// |     |     |     |     |     |     | # | TOG |  \  |  ,  |  .  |  /  | ENTER |
 //                   | STK |     |     | # |  .  |     |  -  |
 
             bindings = <
 &trans  &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT     &kp CARET  &kp AMPS  &kp STAR   &kp EQUAL  &kp MINUS  &trans
 &trans  &kp N1    &kp N2    &kp N3    &kp N4    &kp N5        &kp N6     &kp N7    &kp N8     &kp N9     &kp N0     &kp PLUS
-&trans  &trans    &trans    &trans    &trans    &trans        &trans     &kp BSLH  &kp COMMA  &kp DOT    &kp FSLH   &kp ENTER
+&trans  &trans    &trans    &trans    &trans    &trans        &tog NUM   &kp BSLH  &kp COMMA  &kp DOT    &kp FSLH   &kp ENTER
                             &trans    &trans    &trans        &kp DOT    &trans    &kp MINUS
             >;
         };
