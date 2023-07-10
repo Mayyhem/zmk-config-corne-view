@@ -346,13 +346,13 @@
 // ------------------------------------------------------------------------------
 // |     |  `  |  @  |  $  |  |  |     | # |  ^  |  &  |  *  |  =  |  -  | LOCK |
 // |     |  _  |  [  |  {  |  (  |  -  | # |  +  |  )  |  }  |  ]  |  \  |      |
-// |     |  :  |  %  |  !  |  #  |  ;  | # |     |  ~  |  <  |  >  |  /  |      |
+// |     |  :  |  %  |  !  |  #  |  ;  | # |     |  ~  |  <  |  >  |  /  |BT_CLR|
 //                   |  /  |     |  \  | # | STK |     |     | 
 
             bindings = <
 &trans  &kp GRAVE  &kp AT     &kp DLLR   &kp PIPE   &trans           &kp CARET  &kp AMPS   &kp STAR  &kp EQUAL  &kp MINUS  &mac_lock
 &trans  &kp UNDER  &kp LBKT   &kp LBRC   &kp LPAR   &kp MINUS        &kp PLUS   &kp RPAR   &kp RBRC  &kp RBKT   &kp BSLH   &trans
-&trans  &kp COLON  &kp PRCNT  &kp EXCL   &kp HASH   &kp SEMI         &trans     &kp TILDE  &kp LT    &kp GT     &kp FSLH   &trans
+&trans  &kp COLON  &kp PRCNT  &kp EXCL   &kp HASH   &kp SEMI         &trans     &kp TILDE  &kp LT    &kp GT     &kp FSLH   &kp BT_CLR
                               &kp FSLH   &trans     &kp BSLH         &trans     &trans     &trans
             >;
         };
